@@ -17,11 +17,11 @@ import javax.swing.*;
  *
  * @author phureekanusont
  */
-public class JavaGUIforFirebase {
+public class SecurityUtil {
     
     public static String DATABASE_URL = "https://java-iot-bed31.firebaseio.com/";
     
-    public static void main(String[] args) {
+    public static void setUp(){
         FileInputStream serviceAccount;
         try {
             serviceAccount = new FileInputStream("service-account.json");
@@ -31,30 +31,30 @@ public class JavaGUIforFirebase {
                 .build();
             FirebaseApp.initializeApp(options);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(JavaGUIforFirebase.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecurityUtil.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(JavaGUIforFirebase.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecurityUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("name");
-        GUI gui = new GUI();
-        
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-              String post = dataSnapshot.getValue(String.class);
-              gui.setLabel(post);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-              System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-        
-        gui.init();
-        
     }
+    
+    
+    public static DatabaseReference getRef(String path){
+        return FirebaseDatabase.getInstance().getReference(path);
+    }
+    
+//    public static void main(String[] args) {
+//         
+//        ref.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//              String post = dataSnapshot.getValue(String.class);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//              System.out.println("The read failed: " + databaseError.getCode());
+//            }
+//        });
+//    }
     
 }
