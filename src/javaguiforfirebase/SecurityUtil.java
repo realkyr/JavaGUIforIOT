@@ -42,19 +42,32 @@ public class SecurityUtil {
         return FirebaseDatabase.getInstance().getReference(path);
     }
     
-//    public static void main(String[] args) {
-//         
-//        ref.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//              String post = dataSnapshot.getValue(String.class);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//              System.out.println("The read failed: " + databaseError.getCode());
-//            }
-//        });
-//    }
+    public static void getValue(String path, String output){
+        SecurityUtil.getRef(path).addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+           String val = dataSnapshot.getValue(String.class);
+           switch (output){
+               case "temp": SecurityData.setCurrent_temp(val);
+                            break;
+               case "control_temp": SecurityData.setControl_temp(val);
+                                    break;
+           }
+           
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+        }
+        });
+    }
+
+    
+    public static void setValue(String path, String val){
+        DatabaseReference myRef = SecurityUtil.getRef(path);
+        myRef.setValue(val, null);
+    }
+    
+
     
 }

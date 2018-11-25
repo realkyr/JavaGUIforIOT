@@ -44,6 +44,7 @@ public class SecurityGUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +64,7 @@ public class SecurityGUI extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("29.2");
+        jTextField1.setText("loading");
         jTextField1.setEnabled(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,12 +97,12 @@ public class SecurityGUI extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("องศาเซลเซียส");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 150, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 292, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("RSU", 0, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel7.setText("อันตราย!");
+        jLabel7.setText(" ");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 239, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
@@ -110,18 +111,27 @@ public class SecurityGUI extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 328, -1, -1));
 
         jButton1.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
-        jButton1.setText("ตั้งค่าเสียง");
+        jButton1.setText("บันทึก");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 326, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 60, 40));
 
         jLabel10.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("เสียงเมื่อแจ้งตือน :");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 328, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
+        jButton2.setText("ตั้งค่าเสียง");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 326, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,80 +157,38 @@ public class SecurityGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        SecurityUtil.setValue("Controller/max_temp", jTextField2.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SecurityGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SecurityGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SecurityGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SecurityGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        SecurityGUI gui = new SecurityGUI();
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                gui.setVisible(true);
-            }
-        });
-        
-        SecurityUtil.setUp();
-        
-        SecurityUtil.getRef("test/max_temp").addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-           String val = dataSnapshot.getValue(String.class);
-           gui.jTextField2.setText(val);
-           gui.jTextField2.setEnabled(true);
-        }
 
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    public javax.swing.JLabel getLabel(int index){
+        switch (index){
+            case 1: return jLabel1;
+            case 2: return jLabel2;
+            case 3: return jLabel3;
+            case 4: return jLabel4;
+            case 5: return jLabel5;
+            case 6: return jLabel6;
+            case 7: return jLabel7;
+            case 9: return jLabel9;
+            case 10: return jLabel10;
+            default: return null;
         }
-        });
-        
-        gui.jTextField2.getDocument().addDocumentListener(new DocumentListener() {
-            public void changedUpdate(DocumentEvent e) {
-              updateValueToFirebase();
-            }
-            public void removeUpdate(DocumentEvent e) {
-              updateValueToFirebase();
-            }
-            public void insertUpdate(DocumentEvent e) {
-              updateValueToFirebase();
-            }
-
-            public void updateValueToFirebase() {
-                DatabaseReference myRef = SecurityUtil.getRef("test/max_temp");
-                myRef.setValue(gui.jTextField2.getText(), null);
-            }
-          });
     }
-
+    
+    public javax.swing.JTextField getTextField(int index){
+        switch (index){
+            case 1: return jTextField1;
+            case 2: return jTextField2;
+            default: return null;
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
