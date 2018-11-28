@@ -42,18 +42,22 @@ public class SecurityUtil {
         return FirebaseDatabase.getInstance().getReference(path);
     }
     
-    public static void getValue(String path, String output){
+    public static void getValue(String path, SecurityData storage){
         SecurityUtil.getRef(path).addListenerForSingleValueEvent(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
            String val = dataSnapshot.getValue(String.class);
-           switch (output){
-               case "temp": SecurityData.setCurrent_temp(val);
-                            break;
-               case "control_temp": SecurityData.setControl_temp(val);
-                                    break;
-           }
-           
+           boolean output = path.contains("Sensor/Data");
+           if (output) storage.setCurrent(val);
+           else {if (val == null || "".equals(val)){
+                switch(path){
+                    case "Controller/max_smoke": val = "400"; break;
+                    case "Controller/max_temp": val = "35"; break;
+                    }
+                SecurityUtil.setValue(path, val);
+                }
+                storage.setControl(val);
+           }          
         }
 
         @Override

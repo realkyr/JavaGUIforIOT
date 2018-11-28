@@ -10,27 +10,27 @@ package javaguiforfirebase;
  * @author phureekanusont
  */
 public class SecurityData {
-    private static String current_temp = "";
-    private static String control_temp = "";
+    private String current = "";
+    private String control = "";
 
-    public static String getCurrent_temp() {
-        return current_temp;
+    public String getCurrent() {
+        return current;
     }
 
-    public static void setCurrent_temp(String current_temp) {
-        SecurityData.current_temp = current_temp;
+    public void setCurrent(String current) {
+        this.current = current;
     }
 
-    public static String getControl_temp() {
-        return control_temp;
+    public String getControl() {
+        return control;
     }
 
-    public static void setControl_temp(String control_temp) {
-        SecurityData.control_temp = control_temp;
+    public void setControl(String control) {
+        this.control = control;
     }
     
-    public static boolean is_danger(){
-        if (Double.parseDouble(current_temp) > Double.parseDouble(control_temp)){
+    public boolean is_danger(){
+        if (Double.parseDouble(current) > Double.parseDouble(control)){
             return true;
         }
         else return false;

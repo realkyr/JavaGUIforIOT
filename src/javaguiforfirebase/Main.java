@@ -5,13 +5,8 @@
  */
 package javaguiforfirebase;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -19,31 +14,18 @@ import javax.swing.event.DocumentListener;
  */
 public class Main {
     static SecurityGUI gui = new SecurityGUI();
+    static SecurityData Temperature = new SecurityData();
+    static SecurityData Smoke = new SecurityData();
     
-    public static void addTempListener(String path, JTextField output){
+    public static void addListener(String path, SecurityData storage, JTextField output){
         SecurityUtil.getRef(path).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
               String post = dataSnapshot.getValue(String.class);
               output.setText(post);
-              SecurityData.setCurrent_temp(post);
-              warn();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-              System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-    }
-    
-    public static void addTempControlListener(String path, JTextField output){
-        SecurityUtil.getRef(path).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-              String post = dataSnapshot.getValue(String.class);
-              output.setText(post);
-              SecurityData.setControl_temp(post);
+              if (path.contains("Sensor/Data")){
+                storage.setCurrent(post);
+              } else { storage.setControl(post);}
               warn();
             }
 
@@ -55,14 +37,34 @@ public class Main {
     }
     
     public static void warn(){
-        if (SecurityData.is_danger()){
+        if (Temperature.is_danger()){
             gui.getLabel(7).setForeground(new java.awt.Color(255, 51, 51));
-            gui.getLabel(7).setText("อันตราย!!");
+            gui.getLabel(7).setText("อุณหภูมิสูงเกินค่าที่ตั้งไว้!");
         }
         else {
             gui.getLabel(7).setForeground(new java.awt.Color(51, 255, 51));
             gui.getLabel(7).setText("สถานะปกติ");
         }
+        
+        if (Smoke.is_danger()){
+            gui.getLabel(7).setForeground(new java.awt.Color(255, 51, 51));
+            gui.getLabel(7).setText("มีปริมาณควันมากกว่าปกติ!");
+        }
+        else {
+            gui.getLabel(7).setForeground(new java.awt.Color(51, 255, 51));
+            gui.getLabel(7).setText("สถานะปกติ");
+        }
+    }
+    
+    static void initialValue(JTextField tf1, JTextField tf2, SecurityData storage){
+        tf1.setText(storage.getCurrent());
+        tf2.setText(storage.getControl());
+        tf2.setEnabled(true);
+    }
+    
+    static void setValueToStorage(String control, String type, SecurityData storage){
+        SecurityUtil.getValue("Controller/" + control, storage);
+        SecurityUtil.getValue("Sensor/Data/" + type, storage);
     }
     
     /**
@@ -101,16 +103,19 @@ public class Main {
         
         SecurityUtil.setUp();
         
-        SecurityUtil.getValue("Controller/max_temp", "control_temp");
-        SecurityUtil.getValue("Sensor/Data/Temperature", "temp");
+        setValueToStorage("max_temp", "Temperature", Temperature);
+        setValueToStorage("max_smoke", "Smoke", Smoke);
         
-        while(SecurityData.getControl_temp().equals("")){
+        while(Temperature.getControl().equals("")){
             gui.getTextField(2).setText("loading");
         }
-        gui.getTextField(2).setText(SecurityData.getControl_temp());
-        gui.getTextField(2).setEnabled(true);
-        gui.getTextField(1).setText(SecurityData.getCurrent_temp());
-        addTempListener("Sensor/Data/Temperature", gui.getTextField(1));
-        addTempControlListener("Controller/max_temp", gui.getTextField(2));
+        
+        initialValue(gui.getTextField(1), gui.getTextField(2), Temperature);
+        initialValue(gui.getTextField(3), gui.getTextField(4), Smoke);
+
+        addListener("Sensor/Data/Temperature", Temperature, gui.getTextField(1));
+        addListener("Controller/max_temp", Temperature, gui.getTextField(2));
+        addListener("Sensor/Data/Smoke", Smoke, gui.getTextField(3));
+        addListener("Controller/max_smoke", Smoke, gui.getTextField(4));
     }
 }

@@ -31,36 +31,92 @@ public class SecurityGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        Empty = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        Empty1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home Security");
+        setBackground(new java.awt.Color(34, 34, 34));
+        setPreferredSize(new java.awt.Dimension(544, 450));
 
-        jPanel1.setBackground(new java.awt.Color(34, 34, 34));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setBackground(new java.awt.Color(34, 34, 34));
 
         jLabel1.setFont(new java.awt.Font("RSU", 3, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hand.png"))); // NOI18N
         jLabel1.setText("Home Security");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 6, 332, -1));
+        jPanel2.add(jLabel1);
+
+        jPanel3.add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel4.setPreferredSize(new java.awt.Dimension(200, 306));
+        jPanel4.setLayout(new java.awt.GridLayout(6, 0));
+
+        jLabel8.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("อุณหภูมิปัจจุบัน");
+        jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel8.setPreferredSize(new java.awt.Dimension(99, 20));
+        jPanel4.add(jLabel8);
+
+        jLabel4.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("อุณหภูมิที่จะควบคุม");
+        jLabel4.setPreferredSize(new java.awt.Dimension(145, 15));
+        jPanel4.add(jLabel4);
+
+        Empty.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        Empty.setForeground(new java.awt.Color(255, 255, 255));
+        Empty.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(Empty);
 
         jLabel2.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("อุณหภูมิปัจจุบัน");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 107, -1, -1));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("ปริมาณควัน");
+        jPanel4.add(jLabel2);
+
+        jLabel12.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("ปริมาณควันที่จะควบคุม");
+        jPanel4.add(jLabel12);
+
+        jPanel3.add(jPanel4, java.awt.BorderLayout.LINE_START);
+
+        jPanel5.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel5.setLayout(new java.awt.GridLayout(6, 0));
 
         jTextField1.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -71,17 +127,7 @@ public class SecurityGUI extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 102, 63, -1));
-
-        jLabel3.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("องศาเซลเซียส");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 107, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("อุณหภูมิที่จะให้แจ้งเตือน");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        jPanel5.add(jTextField1);
 
         jTextField2.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -92,23 +138,7 @@ public class SecurityGUI extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 145, 63, -1));
-
-        jLabel5.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("องศาเซลเซียส");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 292, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("RSU", 0, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel7.setText(" ");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 239, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("warning.mp3");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 328, -1, -1));
+        jPanel5.add(jTextField2);
 
         jButton1.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
         jButton1.setText("บันทึก");
@@ -117,12 +147,56 @@ public class SecurityGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 60, 40));
+        jPanel5.add(jButton1);
+
+        jTextField3.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField3.setText("loading");
+        jTextField3.setEnabled(false);
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jTextField3);
+
+        jTextField4.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField4.setText("loading");
+        jTextField4.setEnabled(false);
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jTextField4);
+
+        jButton3.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
+        jButton3.setText("บันทึก");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton3);
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
+
+        jPanel6.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel6.setLayout(new java.awt.GridLayout(2, 0));
+
+        jLabel7.setFont(new java.awt.Font("RSU", 0, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText(" ");
+        jPanel6.add(jLabel7);
+
+        jPanel8.setBackground(new java.awt.Color(34, 34, 34));
 
         jLabel10.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("เสียงเมื่อแจ้งตือน :");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 328, -1, -1));
+        jPanel8.add(jLabel10);
 
         jButton2.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
         jButton2.setText("ตั้งค่าเสียง");
@@ -131,18 +205,48 @@ public class SecurityGUI extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 326, -1, -1));
+        jPanel8.add(jButton2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-        );
+        jPanel6.add(jPanel8);
+
+        jPanel3.add(jPanel6, java.awt.BorderLayout.SOUTH);
+
+        jPanel7.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel7.setPreferredSize(new java.awt.Dimension(150, 0));
+        jPanel7.setLayout(new java.awt.GridLayout(6, 0));
+
+        jLabel3.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("องศาเซลเซียส");
+        jPanel7.add(jLabel3);
+
+        jLabel11.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("องศาเซลเซียส");
+        jPanel7.add(jLabel11);
+
+        Empty1.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        Empty1.setForeground(new java.awt.Color(255, 255, 255));
+        Empty1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel7.add(Empty1);
+
+        jLabel5.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("PPM");
+        jPanel7.add(jLabel5);
+
+        jLabel13.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("PPM");
+        jPanel7.add(jLabel13);
+
+        jPanel3.add(jPanel7, java.awt.BorderLayout.EAST);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,12 +261,31 @@ public class SecurityGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        SecurityUtil.setValue("Controller/max_temp", jTextField2.getText());
+        String val = jTextField2.getText();
+        if (!val.equals("loading")){
+            SecurityUtil.setValue("Controller/max_temp", val);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String val = jTextField4.getText();
+        if (!val.equals("loading")){
+            SecurityUtil.setValue("Controller/max_smoke", val);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     public javax.swing.JLabel getLabel(int index){
         switch (index){
@@ -171,9 +294,7 @@ public class SecurityGUI extends javax.swing.JFrame {
             case 3: return jLabel3;
             case 4: return jLabel4;
             case 5: return jLabel5;
-            case 6: return jLabel6;
             case 7: return jLabel7;
-            case 9: return jLabel9;
             case 10: return jLabel10;
             default: return null;
         }
@@ -183,23 +304,38 @@ public class SecurityGUI extends javax.swing.JFrame {
         switch (index){
             case 1: return jTextField1;
             case 2: return jTextField2;
+            case 3: return jTextField3;
+            case 4: return jTextField4;
             default: return null;
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Empty;
+    private javax.swing.JLabel Empty1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
