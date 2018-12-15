@@ -6,6 +6,9 @@
 package javaguiforfirebase;
 
 import com.google.firebase.database.*;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -23,10 +26,16 @@ public class Main {
             public void onDataChange(DataSnapshot dataSnapshot) {
               String post = dataSnapshot.getValue(String.class);
               output.setText(post);
+              blink(path, output);
               if (path.contains("Sensor/Data")){
                 storage.setCurrent(post);
               } else { storage.setControl(post);}
-              warn();
+              if (path.contains("smoke") || path.contains("Smoke")){
+                warnSmoke();
+              }
+              else {
+                warnTemp();
+              }
             }
 
             @Override
@@ -36,15 +45,22 @@ public class Main {
         });
     }
     
-    public static void warn(){
-        if (Temperature.is_danger()){
-            gui.getLabel(7).setForeground(new java.awt.Color(255, 51, 51));
-            gui.getLabel(7).setText("อุณหภูมิสูงเกินค่าที่ตั้งไว้!");
+    public static void blink(String path, JTextField output){
+        try {
+                output.setEnabled(true);
+                output.setForeground(new java.awt.Color(255, 51, 51));
+                TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (path.contains("Sensor")){
+                output.setEnabled(false);
+            }
+            output.setForeground(new java.awt.Color(0, 0, 0));
         }
-        else {
-            gui.getLabel(7).setForeground(new java.awt.Color(51, 255, 51));
-            gui.getLabel(7).setText("สถานะปกติ");
-        }
+    }
+    
+    public static void warnSmoke(){
         
         if (Smoke.is_danger()){
             gui.getLabel(7).setForeground(new java.awt.Color(255, 51, 51));
@@ -52,7 +68,17 @@ public class Main {
         }
         else {
             gui.getLabel(7).setForeground(new java.awt.Color(51, 255, 51));
-            gui.getLabel(7).setText("สถานะปกติ");
+            gui.getLabel(7).setText("ควันสถานะปกติ");
+        }
+    }
+    public static void warnTemp(){
+    if (Temperature.is_danger()){
+            gui.getLabel(9).setForeground(new java.awt.Color(255, 51, 51));
+            gui.getLabel(9).setText("อุณหภูมิสูงเกินค่าที่ตั้งไว้!");
+        }
+        else {
+            gui.getLabel(9).setForeground(new java.awt.Color(51, 255, 51));
+            gui.getLabel(9).setText("อุณหภูมิสถานะปกติ");
         }
     }
     

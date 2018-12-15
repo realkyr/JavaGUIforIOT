@@ -8,11 +8,9 @@ package javaguiforfirebase;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.*;
 import com.google.firebase.database.*;
-import java.awt.BorderLayout;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.*;
+import java.util.logging.*;
+import org.json.JSONObject;
 /**
  *
  * @author phureekanusont
@@ -72,6 +70,38 @@ public class SecurityUtil {
         myRef.setValue(val, null);
     }
     
+    public static void setValue(String path, float val){
+        DatabaseReference myRef = SecurityUtil.getRef(path);
+        myRef.setValue(val, null);
+    }
+    
+//    public static void getSingleValue(String path){
+//        SecurityUtil.getRef(path).addListenerForSingleValueEvent(new ValueEventListener() {
+//        @Override
+//        public void onDataChange(DataSnapshot dataSnapshot) {
+//           int counter = 0;
+//           float allTemp = 0;
+//           for (DataSnapshot date: dataSnapshot.getChildren()){
+//               for (DataSnapshot time: date.getChildren()){
+//                   for (DataSnapshot sec: time.getChildren()){
+//                       allTemp += Float.parseFloat(sec.getValue(String.class));
+//                       counter+=1;
+//                   }
+//               }
+//               if (counter != 0){
+//                    SecurityUtil.setValue(path+"/"+date.getKey()+"/average", allTemp/counter);
+//               }
+//               counter = 0;
+//               allTemp = 0;
+//           }
+//           
+//        }
+//
+//        @Override
+//        public void onCancelled(DatabaseError databaseError) {
+//        }
+//        });
+//    }
 
     
 }

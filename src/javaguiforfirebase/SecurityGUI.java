@@ -44,11 +44,12 @@ public class SecurityGUI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField41 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -149,16 +150,16 @@ public class SecurityGUI extends javax.swing.JFrame {
         });
         jPanel5.add(jButton1);
 
-        jTextField3.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("loading");
-        jTextField3.setEnabled(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextField41.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jTextField41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField41.setText("loading");
+        jTextField41.setEnabled(false);
+        jTextField41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextField41ActionPerformed(evt);
             }
         });
-        jPanel5.add(jTextField3);
+        jPanel5.add(jTextField41);
 
         jTextField4.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -185,11 +186,17 @@ public class SecurityGUI extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(34, 34, 34));
         jPanel6.setLayout(new java.awt.GridLayout(2, 0));
 
-        jLabel7.setFont(new java.awt.Font("RSU", 0, 36)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 51, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText(" ");
         jPanel6.add(jLabel7);
+
+        jLabel9.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText(" ");
+        jPanel6.add(jLabel9);
 
         jPanel8.setBackground(new java.awt.Color(34, 34, 34));
 
@@ -269,11 +276,12 @@ public class SecurityGUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+//        SecurityUtil.getSingleValue("Sensor/history");
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextField41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField41ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextField41ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
@@ -295,6 +303,7 @@ public class SecurityGUI extends javax.swing.JFrame {
             case 4: return jLabel4;
             case 5: return jLabel5;
             case 7: return jLabel7;
+            case 9: return jLabel9;
             case 10: return jLabel10;
             default: return null;
         }
@@ -304,7 +313,7 @@ public class SecurityGUI extends javax.swing.JFrame {
         switch (index){
             case 1: return jTextField1;
             case 2: return jTextField2;
-            case 3: return jTextField3;
+            case 3: return jTextField41;
             case 4: return jTextField4;
             default: return null;
         }
@@ -326,6 +335,7 @@ public class SecurityGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -335,7 +345,7 @@ public class SecurityGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField41;
     // End of variables declaration//GEN-END:variables
 }
