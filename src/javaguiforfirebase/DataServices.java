@@ -8,6 +8,7 @@ package javaguiforfirebase;
 import com.google.firebase.*;
 import com.google.firebase.database.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -16,6 +17,14 @@ import java.util.*;
 public class DataServices {
     private static LinkedList<HistoryData> temperatureData = new LinkedList<HistoryData>();
     private static LinkedList<HistoryData> smokeData = new LinkedList<HistoryData>();
+
+    public static void setTemperatureData(LinkedList<HistoryData> temperatureData) {
+        DataServices.temperatureData = temperatureData;
+    }
+
+    public static void setSmokeData(LinkedList<HistoryData> smokeData) {
+        DataServices.smokeData = smokeData;
+    }
     
     public static LinkedList<HistoryData> getTemperatureData(){
         return temperatureData;
@@ -26,7 +35,7 @@ public class DataServices {
     }
     
     public static void initialTempData(){
-    SecurityUtil.getRef("Sensor/tempHistory").addListenerForSingleValueEvent(new ValueEventListener() {
+    SecurityUtil.getRef("Sensor/tempHistory").addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
            int counter = 0;
@@ -40,7 +49,6 @@ public class DataServices {
                }
                if (counter != 0){
                     temperatureData.add(new HistoryData(date.getKey(), allTemp/counter));
-                    System.out.println("add data successful");
                }
                counter = 0;
                allTemp = 0;
@@ -59,21 +67,25 @@ public class DataServices {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
            int counter = 0;
-           float allTemp = 0;
+           float allSmoke = 0;
            for (DataSnapshot date: dataSnapshot.getChildren()){
                for (DataSnapshot time: date.getChildren()){
                    for (DataSnapshot sec: time.getChildren()){
-                       allTemp += Float.parseFloat(sec.getValue(String.class));
+                       allSmoke += Float.parseFloat(sec.getValue(String.class));
                        counter+=1;
                    }
                }
                if (counter != 0){
-                    smokeData.add(new HistoryData(date.getKey(), allTemp/counter));
+                    smokeData.add(new HistoryData(date.getKey(), allSmoke/counter));
                }
                counter = 0;
-               allTemp = 0;
+               allSmoke = 0;
            }
-           
+           try {
+                TimeUnit.SECONDS.sleep(1);
+           } catch (InterruptedException ex) {
+                ex.printStackTrace();
+           }
         }
 
         @Override

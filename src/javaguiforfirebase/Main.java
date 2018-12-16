@@ -6,6 +6,7 @@
 package javaguiforfirebase;
 
 import com.google.firebase.database.*;
+import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,9 +32,13 @@ public class Main {
                 storage.setCurrent(post);
               } else { storage.setControl(post);}
               if (path.contains("smoke") || path.contains("Smoke")){
+                DataServices.setSmokeData(new LinkedList<>());
+                DataServices.initialSmokeData();
                 warnSmoke();
               }
               else {
+                DataServices.setTemperatureData(new LinkedList<>());
+                DataServices.initialTempData();
                 warnTemp();
               }
             }
@@ -143,5 +148,8 @@ public class Main {
         addListener("Controller/max_temp", Temperature, gui.getTextField(2));
         addListener("Sensor/Data/Smoke", Smoke, gui.getTextField(3));
         addListener("Controller/max_smoke", Smoke, gui.getTextField(4));
+        
+        DataServices.initialSmokeData();
+        
     }
 }
