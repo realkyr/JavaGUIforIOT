@@ -74,34 +74,6 @@ public class SecurityUtil {
         DatabaseReference myRef = SecurityUtil.getRef(path);
         myRef.setValue(val, null);
     }
-    
-//    public static void getSingleValue(String path){
-//        SecurityUtil.getRef(path).addListenerForSingleValueEvent(new ValueEventListener() {
-//        @Override
-//        public void onDataChange(DataSnapshot dataSnapshot) {
-//           int counter = 0;
-//           float allTemp = 0;
-//           for (DataSnapshot date: dataSnapshot.getChildren()){
-//               for (DataSnapshot time: date.getChildren()){
-//                   for (DataSnapshot sec: time.getChildren()){
-//                       allTemp += Float.parseFloat(sec.getValue(String.class));
-//                       counter+=1;
-//                   }
-//               }
-//               if (counter != 0){
-//                    SecurityUtil.setValue(path+"/"+date.getKey()+"/average", allTemp/counter);
-//               }
-//               counter = 0;
-//               allTemp = 0;
-//           }
-//           
-//        }
-//
-//        @Override
-//        public void onCancelled(DatabaseError databaseError) {
-//        }
-//        });
-//    }
 
     
 }

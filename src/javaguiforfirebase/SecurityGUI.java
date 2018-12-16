@@ -5,9 +5,9 @@
  */
 package javaguiforfirebase;
 
-import com.google.firebase.database.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import java.util.concurrent.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -275,8 +275,7 @@ public class SecurityGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-//        SecurityUtil.getSingleValue("Sensor/history");
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField41ActionPerformed

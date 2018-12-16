@@ -51,5 +51,6 @@ public class SoundPlayer {
     public static void main(String[] args){
         SoundPlayer.setSound("alarm.wav");
         SoundPlayer.play();
+        SoundPlayer.stop();
     }
 }
