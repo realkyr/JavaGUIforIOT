@@ -48,8 +48,12 @@ public class SecurityGUI extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -184,19 +188,36 @@ public class SecurityGUI extends javax.swing.JFrame {
         jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
 
         jPanel6.setBackground(new java.awt.Color(34, 34, 34));
-        jPanel6.setLayout(new java.awt.GridLayout(2, 0));
+        jPanel6.setLayout(new java.awt.GridLayout(3, 0));
 
-        jLabel7.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText(" ");
-        jPanel6.add(jLabel7);
+        jPanel9.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel9.setLayout(new java.awt.GridLayout(1, 2));
 
         jLabel9.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 51, 51));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText(" ");
-        jPanel6.add(jLabel9);
+        jPanel9.add(jLabel9);
+
+        jLabel7.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText(" ");
+        jPanel9.add(jLabel7);
+
+        jPanel6.add(jPanel9);
+
+        jPanel1.setBackground(new java.awt.Color(34, 34, 34));
+
+        jButton4.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
+        jButton4.setText("กราฟค่าเฉลี่ยอุณหภูมิ");
+        jPanel1.add(jButton4);
+
+        jButton6.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
+        jButton6.setText("กราฟค่าเฉลี่ยควัน");
+        jPanel1.add(jButton6);
+
+        jPanel6.add(jPanel1);
 
         jPanel8.setBackground(new java.awt.Color(34, 34, 34));
 
@@ -323,6 +344,8 @@ public class SecurityGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -335,6 +358,7 @@ public class SecurityGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -342,6 +366,7 @@ public class SecurityGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
