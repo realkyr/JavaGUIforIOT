@@ -106,7 +106,7 @@ public class BarChartDataGas extends JFrame {
 
    private DefaultCategoryDataset createDataset( ) {
       DefaultCategoryDataset dataset2 = new DefaultCategoryDataset( );
-      SecurityUtil.setUp();
+      // SecurityUtil.setUp();
       DataServices.initialSmokeData();
       DataServices.waiting();
       System.out.println(DataServices.getSmokeData().size());
