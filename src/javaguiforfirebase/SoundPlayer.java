@@ -27,16 +27,20 @@ public class SoundPlayer {
     }
     
     public static void setSound(String path){
+        setFileLocation(path);
+        Main.getGui().getLabel(14).setText(path);
         try {
-            setFileLocation(path);
             inputStream = new FileInputStream(SoundPlayer.fileLocation);
             audioStream = new AudioStream(SoundPlayer.inputStream);
             md = audioStream.getData();
             con = new ContinuousAudioDataStream(md);
+            SecurityUtil.setValue("Controller/sounds", path);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(SoundPlayer.class.getName()).log(Level.SEVERE, null, ex);
+            Main.getGui().getLabel(14).setText("File not found!");
+            SecurityUtil.setValue("Controller/sounds", "alarm.wav");
         } catch (IOException ex) {
-            Logger.getLogger(SoundPlayer.class.getName()).log(Level.SEVERE, null, ex);
+            Main.getGui().getLabel(14).setText("Error");
+            SecurityUtil.setValue("Controller/sounds", "alarm.wav");
         }
     }
     
@@ -48,9 +52,4 @@ public class SoundPlayer {
         AudioPlayer.player.stop(con);
     }
     
-    public static void main(String[] args){
-        SoundPlayer.setSound("alarm.wav");
-        SoundPlayer.play();
-        SoundPlayer.stop();
-    }
 }

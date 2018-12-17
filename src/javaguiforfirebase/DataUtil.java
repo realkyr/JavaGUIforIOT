@@ -3,13 +3,7 @@
 package javaguiforfirebase;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
-import javaguiforfirebase.DataServices;
-import javaguiforfirebase.HistoryData;
-import javaguiforfirebase.LineChartDataTemp;
-import javaguiforfirebase.SecurityData;
-import javaguiforfirebase.SecurityUtil;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /*
@@ -113,7 +107,4 @@ public class DataUtil {
       return null;
     }
     
-    public static void main(String args[]) {
-      
-    }
 }

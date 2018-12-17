@@ -153,13 +153,24 @@ public class Main {
         addListener("Sensor/Data/Smoke", Smoke, gui.getTextField(3));
         addListener("Controller/max_smoke", Smoke, gui.getTextField(4));
         
-        DataServices.initialSmokeData();
-        DataServices.waiting();
-        System.out.println(DataServices.getSmokeData().size());
-        for (HistoryData data: DataServices.getSmokeData()){
-            System.out.println(data.getDetail());
+ 
+        SecurityUtil.getRef("Controller/sounds").addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+           String Sound = dataSnapshot.getValue(String.class);
+           
+           if (Sound == null){
+               SoundPlayer.setSound("alarm.wav");
+           }
+           else {
+               SoundPlayer.setSound(Sound);
+           }
         }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+        }
+        });
         
-        SoundPlayer.setSound("alarm.wav");
     }
 }

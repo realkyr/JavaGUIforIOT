@@ -5,9 +5,14 @@
  */
 package javaguiforfirebase;
 
+import java.io.File;
 import java.util.concurrent.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -56,6 +61,7 @@ public class SecurityGUI extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -211,10 +217,20 @@ public class SecurityGUI extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
         jButton4.setText("กราฟค่าเฉลี่ยอุณหภูมิ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4);
 
         jButton6.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
         jButton6.setText("กราฟค่าเฉลี่ยควัน");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton6);
 
         jPanel6.add(jPanel1);
@@ -225,6 +241,11 @@ public class SecurityGUI extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("เสียงเมื่อแจ้งตือน :");
         jPanel8.add(jLabel10);
+
+        jLabel14.setFont(new java.awt.Font("RSU", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText(" ");
+        jPanel8.add(jLabel14);
 
         jButton2.setFont(new java.awt.Font("RSU", 0, 13)); // NOI18N
         jButton2.setText("ตั้งค่าเสียง");
@@ -296,7 +317,28 @@ public class SecurityGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LineChartDataTemp.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(LineChartDataTemp.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(LineChartDataTemp.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(LineChartDataTemp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Wav File", "wav");
+        File file;
+        
+        JFileChooser dialog = new JFileChooser("Please select sound file");
+        dialog.setFileFilter(filter);
+        dialog.setAcceptAllFileFilterUsed(false);
+        int selectedButton = dialog.showDialog ( null, "Select" );
+        if (selectedButton == JFileChooser.APPROVE_OPTION){
+            file = dialog.getSelectedFile();
+            SoundPlayer.setSound(file.getPath());
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
                                              
     private void jTextField41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField41ActionPerformed
@@ -314,8 +356,8 @@ public class SecurityGUI extends javax.swing.JFrame {
             SecurityUtil.setValue("Controller/max_smoke", val);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-    
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         String command = evt.getActionCommand();
         if (command.equalsIgnoreCase("กราฟค่าเฉลี่ยอุณหภูมิ")) {
@@ -323,9 +365,9 @@ public class SecurityGUI extends javax.swing.JFrame {
          "Temperature Average Value Analysis" ,
          "Summary the Average Value of Temperature");
         }
-    }
-    
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         String command = evt.getActionCommand();
         if (command.equalsIgnoreCase("กราฟค่าเฉลี่ยควัน")) {
@@ -333,7 +375,8 @@ public class SecurityGUI extends javax.swing.JFrame {
          "Smoke Average Value Analysis" ,
          "Summary the Average Value of Smoke");
         }
-    }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     
     public javax.swing.JLabel getLabel(int index){
         switch (index){
@@ -345,6 +388,7 @@ public class SecurityGUI extends javax.swing.JFrame {
             case 7: return jLabel7;
             case 9: return jLabel9;
             case 10: return jLabel10;
+            case 14: return jLabel14;
             default: return null;
         }
     }
@@ -371,6 +415,7 @@ public class SecurityGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

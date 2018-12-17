@@ -5,7 +5,6 @@
  */
 package javaguiforfirebase;
 
-import com.google.firebase.*;
 import com.google.firebase.database.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +19,10 @@ public class DataServices {
     private static LinkedList<HistoryData> temperatureData = new LinkedList<HistoryData>();
     private static LinkedList<HistoryData> smokeData = new LinkedList<HistoryData>();
     private static boolean finish = false;
+    
+    public static void turnOff(){
+        finish = false;
+    }
     
     public static boolean isFinish(){
         return finish;
@@ -56,6 +59,7 @@ public class DataServices {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
            finish = false;
+           LinkedList<HistoryData> temporary = new LinkedList<HistoryData>();
            int counter = 0;
            float allTemp = 0;
            for (DataSnapshot date: dataSnapshot.getChildren()){
@@ -66,12 +70,12 @@ public class DataServices {
                    }
                }
                if (counter != 0){
-                    System.out.println("add data");
-                    temperatureData.add(new HistoryData(date.getKey(), allTemp/counter));
+                    temporary.add(new HistoryData(date.getKey(), allTemp/counter));
                }
                counter = 0;
                allTemp = 0;
            }
+           temperatureData = temporary;
            finish = true;
         }
 
@@ -85,9 +89,10 @@ public class DataServices {
     SecurityUtil.getRef("Sensor/smokeHistory").addListenerForSingleValueEvent(new ValueEventListener() {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
+           finish = false;
            int counter = 0;
            float allSmoke = 0;
-           finish = false;
+           LinkedList<HistoryData> temporary = new LinkedList<HistoryData>();
            for (DataSnapshot date: dataSnapshot.getChildren()){
                for (DataSnapshot time: date.getChildren()){
                    for (DataSnapshot sec: time.getChildren()){
@@ -96,12 +101,12 @@ public class DataServices {
                    }
                }
                if (counter != 0){
-                    System.out.println("add data");
-                    smokeData.add(new HistoryData(date.getKey(), allSmoke/counter));
+                    temporary.add(new HistoryData(date.getKey(), allSmoke/counter));
                }
                counter = 0;
                allSmoke = 0;
            }
+           smokeData = temporary;
            finish = true;
         }
 
