@@ -107,7 +107,14 @@ public class BarChartDataTemp extends JFrame {
       DefaultCategoryDataset dataset2 = new DefaultCategoryDataset( );
       // SecurityUtil.setUp();
       DataServices.initialTempData();
-      DataServices.waiting();
+      // DataServices.waiting();
+      while(!DataServices.isFinish()) {
+	try {
+		TimeUnit.MILLISECONDS.sleep(1);
+	}
+	catch (InterruptedException ex) {
+	}
+      }
       System.out.println(DataServices.getTemperatureData().size());
       for (HistoryData data: DataServices.getTemperatureData()) {
           dataset2.addValue( data.getAverage(), "Temperature", data.getDate() );

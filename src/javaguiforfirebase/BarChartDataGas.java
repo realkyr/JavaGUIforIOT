@@ -108,7 +108,14 @@ public class BarChartDataGas extends JFrame {
       DefaultCategoryDataset dataset2 = new DefaultCategoryDataset( );
       // SecurityUtil.setUp();
       DataServices.initialSmokeData();
-      DataServices.waiting();
+      // DataServices.waiting();
+      while(!DataServices.isFinish()) {
+	try {
+		TimeUnit.MILLISECONDS.sleep(1);
+	}
+	catch (InterruptedException ex) {
+	}
+      }
       System.out.println(DataServices.getSmokeData().size());
       for (HistoryData data: DataServices.getSmokeData()) {
           dataset2.addValue( data.getAverage(), "Smoke", data.getDate() );
