@@ -105,34 +105,15 @@ public class BarChartDataGas extends JFrame {
    }
 
    private DefaultCategoryDataset createDataset( ) {
-      
-      DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-      /* DefaultCategoryDataset dataset2 = new DefaultCategoryDataset( );
-      
-      String[] dataset = new String[2];
+      DefaultCategoryDataset dataset2 = new DefaultCategoryDataset( );
       SecurityUtil.setUp();
-      try {
-          DataServices.initialTempData();
-          TimeUnit.SECONDS.sleep(3);
-      } catch (InterruptedException ex) {
-          ex.printStackTrace();
-      }
-
+      DataServices.initialSmokeData();
+      DataServices.waiting();
+      System.out.println(DataServices.getSmokeData().size());
       for (HistoryData data: DataServices.getSmokeData()) {
-          dataset[0] = data.getDate();
-          dataset[1] = String.valueOf(data.getAverage());
-          System.out.println(dataset[0] + " " + dataset[1]);
-      } 
-      
-      dataset2.addValue( Double.parseDouble(dataset[1]), "Smoke", dataset[0] );*/
-      dataset.addValue( 140, "Smoke" , "20181210" );
-      dataset.addValue( 175 , "Smoke" , "20181211" );
-      dataset.addValue( 250 , "Smoke" , "20181212" );
-      dataset.addValue( 222 , "Smoke" , "20181213" );
-      dataset.addValue( 136 , "Smoke" , "20181214" );
-      dataset.addValue( 165 , "Smoke" , "20181215" );
-      dataset.addValue( 192 , "Smoke" , "20181216" ); 
-      return dataset;
+          dataset2.addValue( data.getAverage(), "Smoke", data.getDate() );
+      }
+      return dataset2;
    }
    
    public static void main( String[ ] args ) {

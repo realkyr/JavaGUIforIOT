@@ -104,34 +104,15 @@ public class BarChartDataTemp extends JFrame {
    }
 
    private DefaultCategoryDataset createDataset( ) {
-      
-      DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-      /* DefaultCategoryDataset dataset2 = new DefaultCategoryDataset( );
-      
-      String[] dataset = new String[2];
+      DefaultCategoryDataset dataset2 = new DefaultCategoryDataset( );
       SecurityUtil.setUp();
-      try {
-          DataServices.initialTempData();
-          TimeUnit.SECONDS.sleep(3);
-      } catch (InterruptedException ex) {
-          ex.printStackTrace();
-      }
-
+      DataServices.initialTempData();
+      DataServices.waiting();
+      System.out.println(DataServices.getTemperatureData().size());
       for (HistoryData data: DataServices.getTemperatureData()) {
-          dataset[0] = data.getDate();
-          dataset[1] = String.valueOf(data.getAverage());
-          System.out.println(dataset[0] + " " + dataset[1]);
+          dataset2.addValue( data.getAverage(), "Temperature", data.getDate() );
       }
-      
-      dataset2.addValue( Double.parseDouble(dataset[1]), "Temperature", dataset[0] ); */
-      dataset.addValue( 29.5 , "Temperature" , "20181210" );
-      dataset.addValue( 27.5 , "Temperature" , "20181211" );
-      dataset.addValue( 28.5 , "Temperature" , "20181212" );
-      dataset.addValue( 29.5 , "Temperature" , "20181213" );
-      dataset.addValue( 27.5 , "Temperature" , "20181214" );
-      dataset.addValue( 28.5 , "Temperature" , "20181215" );
-      dataset.addValue( 30.2 , "Temperature" , "20181216" ); 
-      return dataset;
+      return dataset2;
    }
    
    public static void main( String[ ] args ) {
