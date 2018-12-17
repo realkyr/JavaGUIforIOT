@@ -9,6 +9,8 @@ import com.google.firebase.*;
 import com.google.firebase.database.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +19,22 @@ import java.util.concurrent.TimeUnit;
 public class DataServices {
     private static LinkedList<HistoryData> temperatureData = new LinkedList<HistoryData>();
     private static LinkedList<HistoryData> smokeData = new LinkedList<HistoryData>();
-
+    private static boolean finish = false;
+    
+    public static boolean isFinish(){
+        return finish;
+    }
+    
+    public static void waiting(){
+        while(!isFinish()){
+            try {
+                TimeUnit.MILLISECONDS.sleep(1);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(DataServices.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     public static void setTemperatureData(LinkedList<HistoryData> temperatureData) {
         DataServices.temperatureData = temperatureData;
     }
@@ -38,6 +55,7 @@ public class DataServices {
     SecurityUtil.getRef("Sensor/tempHistory").addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
+           finish = false;
            int counter = 0;
            float allTemp = 0;
            for (DataSnapshot date: dataSnapshot.getChildren()){
@@ -48,12 +66,13 @@ public class DataServices {
                    }
                }
                if (counter != 0){
+                    System.out.println("add data");
                     temperatureData.add(new HistoryData(date.getKey(), allTemp/counter));
                }
                counter = 0;
                allTemp = 0;
            }
-           
+           finish = true;
         }
 
         @Override
@@ -68,6 +87,7 @@ public class DataServices {
     public void onDataChange(DataSnapshot dataSnapshot) {
            int counter = 0;
            float allSmoke = 0;
+           finish = false;
            for (DataSnapshot date: dataSnapshot.getChildren()){
                for (DataSnapshot time: date.getChildren()){
                    for (DataSnapshot sec: time.getChildren()){
@@ -76,21 +96,20 @@ public class DataServices {
                    }
                }
                if (counter != 0){
+                    System.out.println("add data");
                     smokeData.add(new HistoryData(date.getKey(), allSmoke/counter));
                }
                counter = 0;
                allSmoke = 0;
            }
-           try {
-                TimeUnit.SECONDS.sleep(1);
-           } catch (InterruptedException ex) {
-                ex.printStackTrace();
-           }
+           finish = true;
         }
 
         @Override
         public void onCancelled(DatabaseError databaseError) {
         }
         });
+     
     }
+    
 }

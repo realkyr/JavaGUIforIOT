@@ -21,6 +21,10 @@ public class Main {
     static SecurityData Temperature = new SecurityData();
     static SecurityData Smoke = new SecurityData();
     
+    public static SecurityGUI getGui(){
+        return gui;
+    }
+    
     public static void addListener(String path, SecurityData storage, JTextField output){
         SecurityUtil.getRef(path).addValueEventListener(new ValueEventListener() {
             @Override
@@ -32,13 +36,9 @@ public class Main {
                 storage.setCurrent(post);
               } else { storage.setControl(post);}
               if (path.contains("smoke") || path.contains("Smoke")){
-                DataServices.setSmokeData(new LinkedList<>());
-                DataServices.initialSmokeData();
                 warnSmoke();
               }
               else {
-                DataServices.setTemperatureData(new LinkedList<>());
-                DataServices.initialTempData();
                 warnTemp();
               }
             }
@@ -68,20 +68,24 @@ public class Main {
     public static void warnSmoke(){
         
         if (Smoke.is_danger()){
+            SoundPlayer.play();
             gui.getLabel(7).setForeground(new java.awt.Color(255, 51, 51));
             gui.getLabel(7).setText("มีปริมาณควันมากกว่าปกติ!");
         }
         else {
+            SoundPlayer.stop();
             gui.getLabel(7).setForeground(new java.awt.Color(51, 255, 51));
             gui.getLabel(7).setText("ควันสถานะปกติ");
         }
     }
     public static void warnTemp(){
     if (Temperature.is_danger()){
+            SoundPlayer.play();
             gui.getLabel(9).setForeground(new java.awt.Color(255, 51, 51));
             gui.getLabel(9).setText("อุณหภูมิสูงเกินค่าที่ตั้งไว้!");
         }
         else {
+            SoundPlayer.stop();
             gui.getLabel(9).setForeground(new java.awt.Color(51, 255, 51));
             gui.getLabel(9).setText("อุณหภูมิสถานะปกติ");
         }
@@ -150,6 +154,12 @@ public class Main {
         addListener("Controller/max_smoke", Smoke, gui.getTextField(4));
         
         DataServices.initialSmokeData();
+        DataServices.waiting();
+        System.out.println(DataServices.getSmokeData().size());
+        for (HistoryData data: DataServices.getSmokeData()){
+            System.out.println(data.getDetail());
+        }
         
+        SoundPlayer.setSound("alarm.wav");
     }
 }
