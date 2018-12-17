@@ -298,7 +298,7 @@ public class SecurityGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
     }//GEN-LAST:event_jButton2ActionPerformed
-
+                                             
     private void jTextField41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField41ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField41ActionPerformed
@@ -314,6 +314,26 @@ public class SecurityGUI extends javax.swing.JFrame {
             SecurityUtil.setValue("Controller/max_smoke", val);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        String command = evt.getActionCommand();
+        if (command.equalsIgnoreCase("กราฟค่าเฉลี่ยอุณหภูมิ")) {
+            LineChartDataTemp tempfr = new LineChartDataTemp(
+         "Temperature Average Value Analysis" ,
+         "Summary the Average Value of Temperature");
+        }
+    }
+    
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        String command = evt.getActionCommand();
+        if (command.equalsIgnoreCase("กราฟค่าเฉลี่ยควัน")) {
+            LineChartDataGas tempgas = new LineChartDataGas(
+         "Smoke Average Value Analysis" ,
+         "Summary the Average Value of Smoke");
+        }
+    }
     
     public javax.swing.JLabel getLabel(int index){
         switch (index){
