@@ -10,7 +10,6 @@ import com.google.firebase.*;
 import com.google.firebase.database.*;
 import java.io.*;
 import java.util.logging.*;
-import org.json.JSONObject;
 /**
  *
  * @author phureekanusont
